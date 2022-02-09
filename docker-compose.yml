@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+    ports:
+      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+    expose:
+      - $MYSQL_DOCKER_PORT
+    volumes:
+      - db:/var/lib/mysql
+  web:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: 'Dockerfile'
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /node_modules
+      - db
+volumes:
+  db:

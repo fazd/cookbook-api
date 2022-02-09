@@ -1,0 +1,34 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": "tsconfig.eslint.json"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "prefer-const": "error",
+    "@typescript-eslint/no-unused-params": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": "error"
+  },
+  "overrides": [
+    {
+      "files": ["tests/**/*.ts"],
+      "env": { "jest": true, "node": true }
+    }
+  ]
+}
