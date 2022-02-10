@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import apiRouter from './components/routes';
 
 const app = express();
 
@@ -19,4 +20,7 @@ app.get('/', (_req, res, _next) => {
     message: 'Welcome to the API',
   });
 });
+
+app.use('/api', apiRouter);
+
 export { app };
