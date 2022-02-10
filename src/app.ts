@@ -19,5 +19,4 @@ app.get('/', (_req, res, _next) => {
     message: 'Welcome to the API',
   });
 });
-
 export { app };
