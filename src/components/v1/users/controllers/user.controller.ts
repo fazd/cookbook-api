@@ -8,7 +8,6 @@ export class UserController {
   }
 
   create: RequestHandler = async (req, res, next) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { body } = req;
     try {
       const user = await this.userService.create(body);

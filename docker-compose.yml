@@ -1,28 +1,18 @@
-version: '3.8'
+version: '3.7'
+
 services:
-  db:
-    image: mysql:5.7
+  mysql:
+    image: mysql
     restart: always
-    env_file: ./.env
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
-      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=cookbook
     ports:
-      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+      - '3306:3306'
     expose:
-      - $MYSQL_DOCKER_PORT
-    volumes:
-      - db:/var/lib/mysql
-  web:
+      - 3306
+  symtrain:
+    build: ./
+    env_file: .env
     depends_on:
-      - db
-    build:
-      context: .
-      dockerfile: 'Dockerfile'
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/app
-      - /node_modules
-volumes:
-  db:
+      - mysql

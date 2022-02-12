@@ -1,8 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import apiRouter from './components/routes';
+import Logger from './config/logger';
+import { customErrorMiddleware } from './middlewares/custom-error.middleware';
 
 const app = express();
+
+app.use(Logger.requests);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -22,5 +26,7 @@ app.get('/', (_req, res, _next) => {
 });
 
 app.use('/api', apiRouter);
+
+app.use(customErrorMiddleware);
 
 export { app };

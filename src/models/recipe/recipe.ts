@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { UserSchema } from '../user/user';
 import { database } from '../../config/database';
+import { Recipe } from '../../interfaces/IRecipe.interface';
 
 export class RecipeSchema extends Model<Recipe> {}
 

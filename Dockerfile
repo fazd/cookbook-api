@@ -1,9 +1,12 @@
-FROM node:16
-WORKDIR /app
-COPY package*.json ./
-COPY tsconfig.json ./
-COPY src /app/src
-RUN ls -a
-RUN yarn install
+FROM node
+COPY . /server
+WORKDIR /server
+RUN rm -rf ./node_modules
+RUN npm install
 EXPOSE 3000
-CMD ["yarn", "dev"]
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=
+ENV DB_DATABASE=symtrain
+ENV DB_HOST=mysql
+ENV JWT_SECRET=DFGNLJDFGHLDFNHLNLKHNDFGL
+ENTRYPOINT ["yarn", "dev"]
