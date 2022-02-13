@@ -16,4 +16,10 @@ export const configuration = Object.freeze({
     host: process.env.HOST!,
     port: parseInt(process.env.DB_PORT!, 10),
   },
+  pagination: {
+    limit: process.env.PAGINATION_LIMIT || '20',
+    page: process.env.PAGINATION_PAGE || '1',
+    orderBy: process.env.PAGINATION_ORDER_BY || 'DESC',
+    sortBy: process.env.PAGINATION_SORT_BY || 'createdAt',
+  },
 });

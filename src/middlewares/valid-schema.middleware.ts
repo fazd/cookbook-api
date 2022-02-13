@@ -1,14 +1,32 @@
 import { RequestHandler } from 'express';
-import { Schema } from 'joi';
+import { DtoType } from '../interfaces/IDto.interface';
 
-export const validSchema = (schema: Schema): RequestHandler => {
+export const validSchema = (dto: DtoType): RequestHandler => {
   return (req, res, next) => {
-    const { body } = req;
-    const { error } = schema.validate(body);
+    const { body, params, query } = req;
 
-    if (error) {
-      throw new Error(error?.message);
+    if (dto.body) {
+      const { error } = dto.body.validate(body);
+      if (error) {
+        throw new Error(error?.message);
+      }
     }
+
+    if (dto.params) {
+      const { error } = dto.params.validate(params);
+      if (error) {
+        throw new Error(error?.message);
+      }
+    }
+
+    if (dto.query) {
+      const { error } = dto.query.validate(query);
+      console.log('error', error);
+      if (error) {
+        throw new Error(error?.message);
+      }
+    }
+
     next();
   };
 };

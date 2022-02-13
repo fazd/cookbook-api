@@ -4,8 +4,8 @@ import { AuthController } from './controllers/auth.controller';
 import { loginDto } from './dto/auth.dto';
 
 const authController = new AuthController();
-const userRouter = Router();
+const authRouter = Router();
 
-userRouter.route('/').post(validSchema(loginDto), authController.login);
+authRouter.route('/').post(validSchema(loginDto), authController.login);
 
-export default userRouter;
+export default authRouter;
