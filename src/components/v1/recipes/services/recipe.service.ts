@@ -20,9 +20,6 @@ export class RecipeService {
   }
 
   async updateRecipe(userId: string, id: string, updateRecipe: UpdateRecipe): Promise<boolean> {
-    console.log('userId', userId);
-    console.log('id', id);
-    console.log('updateRecipe', updateRecipe);
     const updatedRecipe = await this.recipeDao.update(userId, id, updateRecipe);
 
     if (!updatedRecipe) {

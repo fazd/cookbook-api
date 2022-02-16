@@ -10,7 +10,3 @@ interface CreateUser {
   email: string;
   password: string;
 }
-
-// type UpdateUser = Partial<Omit<User, 'id' | 'email'>>;
-
-// type FullUser = User & Timestamps;

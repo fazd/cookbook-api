@@ -11,6 +11,7 @@
     "format": "prettier -c .",
     "db:create": "npx sequelize-cli --env cookbook db:create",
     "db:migrate": "npx sequelize-cli --env cookbook db:migrate",
+    "db:drop": "npx sequelize-cli --env cookbook db:drop",
     "test": "jest"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^14.3.0",
     "express": "^4.17.2",
+    "http-status-codes": "^2.2.0",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",

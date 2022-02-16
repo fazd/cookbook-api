@@ -1,8 +1,10 @@
 import { RequestHandler } from 'express';
 import { UserService } from '../services/user.service';
+import { StatusCodes } from 'http-status-codes';
 
 export class UserController {
   private readonly userService: UserService;
+
   constructor() {
     this.userService = new UserService();
   }
@@ -11,7 +13,7 @@ export class UserController {
     const { body } = req;
     try {
       const user = await this.userService.create(body);
-      res.status(201).json(user);
+      res.status(StatusCodes.OK).json(user);
     } catch (error) {
       next(error);
     }

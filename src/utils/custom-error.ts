@@ -1,12 +1,8 @@
 export default class ErrorResponse extends Error {
   code: string;
-
   status: number;
-
   message: string;
-
   details?: any;
-
   error: boolean;
 
   constructor({ code, message, details, status = 500 }: ErrorItem) {

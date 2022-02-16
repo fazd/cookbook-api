@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import { AuthService } from '../services/auth.service';
+import { StatusCodes } from 'http-status-codes';
 
 export class AuthController {
   private readonly authService: AuthService;
@@ -13,7 +14,17 @@ export class AuthController {
 
     try {
       const login = await this.authService.login(body as LoginCredentials);
-      res.status(200).json(login);
+      res.status(StatusCodes.OK).json(login);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  me: RequestHandler = async (req, res, next) => {
+    const { auth } = req;
+    try {
+      const user = await this.authService.me(auth.id);
+      res.status(StatusCodes.OK).json(user);
     } catch (error) {
       next(error);
     }

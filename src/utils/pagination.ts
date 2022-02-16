@@ -16,8 +16,3 @@ export const getPaginationParams = (query: Pagination) => {
     sortBy,
   };
 };
-
-export const sortCompactToStr = (sortBy: string, orderBy: string) => {
-  const dir = orderBy === pagination.orderBy ? '-' : '';
-  return `${dir}${sortBy}`;
-};

@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import { RecipeService } from '../services/recipe.service';
+import { StatusCodes } from 'http-status-codes';
 
 export class RecipeController {
   private readonly recipeService: RecipeService;
@@ -12,7 +13,7 @@ export class RecipeController {
     const { body, auth } = req;
     try {
       const recipe = await this.recipeService.create(auth.id, body);
-      res.status(200).json(recipe);
+      res.status(StatusCodes.OK).json(recipe);
     } catch (error) {
       next(error);
     }
@@ -23,7 +24,7 @@ export class RecipeController {
       const { query } = req;
       console.log('query', query);
       const recipes = await this.recipeService.getAllRecipes(query as Pagination);
-      res.status(200).json(recipes);
+      res.status(StatusCodes.OK).json(recipes);
     } catch (error) {
       next(error);
     }
@@ -34,7 +35,7 @@ export class RecipeController {
 
     try {
       const recipes = await this.recipeService.getAllRecipes(query as Pagination, auth.id);
-      res.status(200).json(recipes);
+      res.status(StatusCodes.OK).json(recipes);
     } catch (error) {
       next(error);
     }
@@ -45,7 +46,7 @@ export class RecipeController {
 
     try {
       const recipe = await this.recipeService.updateRecipe(auth.id, params.id, body);
-      res.status(200).json(recipe);
+      res.status(StatusCodes.OK).json(recipe);
     } catch (error) {
       next(error);
     }
@@ -56,7 +57,7 @@ export class RecipeController {
 
     try {
       const recipe = await this.recipeService.deleteRecipe(auth.id, params.id);
-      res.status(200).json(recipe);
+      res.status(StatusCodes.OK).json(recipe);
     } catch (error) {
       next(error);
     }
