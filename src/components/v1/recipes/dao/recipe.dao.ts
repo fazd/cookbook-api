@@ -23,7 +23,6 @@ export class RecipeDao {
 
   async update(userId: string, id: string, updateRecipe: UpdateRecipe): Promise<true | null> {
     const recipe = await RecipeSchema.update(updateRecipe, { where: { id, author: userId } });
-    console.log('recipe', recipe);
 
     if (!recipe[0]) {
       return null;
@@ -34,7 +33,6 @@ export class RecipeDao {
 
   async delete(userId: string, id: string): Promise<true | null> {
     const recipe = await RecipeSchema.destroy({ where: { author: userId, id } });
-    console.log('recipe', recipe);
 
     if (!recipe) {
       return null;

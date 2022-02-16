@@ -12,7 +12,7 @@ export class RecipeController {
   create: RequestHandler = async (req, res, next) => {
     const { body, auth } = req;
     try {
-      const recipe = await this.recipeService.create(auth.id, body);
+      const recipe = await this.recipeService.create(auth.id, body as CreateRecipe);
       res.status(StatusCodes.OK).json(recipe);
     } catch (error) {
       next(error);
@@ -22,7 +22,6 @@ export class RecipeController {
   getAll: RequestHandler = async (req, res, next) => {
     try {
       const { query } = req;
-      console.log('query', query);
       const recipes = await this.recipeService.getAllRecipes(query as Pagination);
       res.status(StatusCodes.OK).json(recipes);
     } catch (error) {
@@ -45,7 +44,7 @@ export class RecipeController {
     const { body, params, auth } = req;
 
     try {
-      const recipe = await this.recipeService.updateRecipe(auth.id, params.id, body);
+      const recipe = await this.recipeService.updateRecipe(auth.id, params.id, body as UpdateRecipe);
       res.status(StatusCodes.OK).json(recipe);
     } catch (error) {
       next(error);

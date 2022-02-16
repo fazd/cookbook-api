@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/",
-    "lint": "eslint src --ext js,ts",
+    "lint": "eslint src --ext ts",
     "format": "prettier -c .",
     "db:create": "npx sequelize-cli --env cookbook db:create",
     "db:migrate": "npx sequelize-cli --env cookbook db:migrate",

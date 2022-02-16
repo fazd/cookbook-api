@@ -13,13 +13,6 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "stripInternal": true
-    // "paths": {
-    //   "@config/*": ["./src/config/*"],
-    //   "@components/*": ["./src/components/*"],
-    //   "@models/*": ["./src/models/*"],
-    //   "@middlewares/*": ["./src/middlewares/*"],
-    //   "@errors/*": ["./src/errors/*"]
-    // }
   },
   "include": ["src/**/*", "seeders/migrations"]
 }

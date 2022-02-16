@@ -21,8 +21,6 @@ export class AuthService {
     const { id } = user;
     const isEqualPass = await bcrypt.compare(password, user.password);
 
-    console.log('hashPassword', isEqualPass);
-
     if (isEqualPass) {
       const token = generateAuthToken(id, email);
       return token;

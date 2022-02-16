@@ -1,3 +1,6 @@
 import { Sequelize } from 'sequelize';
+import { configuration } from '.';
 
-export const database = new Sequelize({ username: 'root', database: 'cookbook', dialect: 'mysql', password: 'root' });
+const { database: db, username, password } = configuration.database;
+
+export const database = new Sequelize({ username, database: db, dialect: 'mysql', password });

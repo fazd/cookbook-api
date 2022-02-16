@@ -12,7 +12,7 @@ export class UserController {
   create: RequestHandler = async (req, res, next) => {
     const { body } = req;
     try {
-      const user = await this.userService.create(body);
+      const user = await this.userService.create(body as CreateUser);
       res.status(StatusCodes.OK).json(user);
     } catch (error) {
       next(error);

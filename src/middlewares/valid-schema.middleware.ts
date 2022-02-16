@@ -4,7 +4,7 @@ import ErrorResponse from '../utils/custom-error';
 import { StatusCodes } from 'http-status-codes';
 
 export const validSchema = (dto: DtoType): RequestHandler => {
-  return (req, res, next) => {
+  return (req, _res, next) => {
     const { body, params, query } = req;
 
     if (dto.body) {
@@ -31,7 +31,6 @@ export const validSchema = (dto: DtoType): RequestHandler => {
 
     if (dto.query) {
       const { error } = dto.query.validate(query);
-      console.log('error', error);
       if (error) {
         throw new ErrorResponse({
           message: error?.message,
