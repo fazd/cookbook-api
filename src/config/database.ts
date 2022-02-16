@@ -3,6 +3,4 @@ import { configuration } from '.';
 
 const { database: db, username, password, host } = configuration.database;
 
-console.log('configuration.database', configuration.database);
-
 export const database = new Sequelize({ username, database: db, dialect: 'mysql', password, host: host });

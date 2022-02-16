@@ -38,13 +38,13 @@ IMPORTANT NOTE: (it is not advised to keep the .env in the repo. however, we are
 To start the db and run the migrations you must:
 - `docker-compose up -d`
 and also run:
-- `docker-compose exec cookbook yarn db:create`
-- `docker-compose exec cookbook yarn db:migrate`
+- `docker-compose exec app yarn db:create`
+- `docker-compose exec app yarn db:migrate`
 
 
 # To delete the Db
 
-`docker-compose exec cookbook yarn db:drop`
+`docker-compose exec app yarn db:drop`
 
 # To run the code:
 
