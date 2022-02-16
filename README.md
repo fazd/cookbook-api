@@ -32,19 +32,21 @@ IMPORTANT NOTE: (it is not advised to keep the .env in the repo. however, we are
 
 
 # Instalation 
-` yarn `
+` docker-compose up --build `
 
 # Initiate DB
-IMPORTANT: you need to have installed and running the mysql daemon. 
+To start the db and run the migrations you must:
+- `docker-compose up -d`
+and also run:
+- `docker-compose exec cookbook yarn db:create`
+- `docker-compose exec cookbook yarn db:migrate`
 
-`yarn db:create`
-`yarn db:migrate`
 
 # To delete the Db
 
-`yarn db:drop`
+`docker-compose exec cookbook yarn db:drop`
 
 # To run the code:
 
-`yarn dev `
+`docker-compose up `
 
